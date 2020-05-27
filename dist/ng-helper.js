@@ -322,7 +322,9 @@
 	  extend = angular.extend;
 	  forEach = angular.forEach;
 	  isDefined = angular.isDefined;
-	  lowercase = angular.lowercase;
+	  lowercase = function(string) {
+	    string.toLowerCase();
+	  };
 	  noop = angular.noop;
 
 	  htmlParser = htmlParserImpl;
