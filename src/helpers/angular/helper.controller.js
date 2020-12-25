@@ -1,6 +1,7 @@
 class HelperController {
-
     constructor($scope, SBInterceptor) {
+        'ngInject';
+
         this.$scope = $scope;
 
         // Allowed events from parrent iFrame
@@ -11,11 +12,10 @@ class HelperController {
     }
 
     $onInit() {
-
         // Tell sb that helper already loaded;
         window.parent.sb.contact();
 
-        // Register lissener for render new component
+        // Register listener for render new component
         this.postMessageListener = window.addEventListener('message', event => {
             event.data && this.events[event.data.type].call(this, event.data);
         }, false);

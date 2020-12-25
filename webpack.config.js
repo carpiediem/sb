@@ -1,15 +1,39 @@
-var path = require('path');
-var webpack = require('webpack');
-
 module.exports = {
   module: {
-    loaders: [
-      { test: /\.js$/, exclude: [/app\/lib/, /node_modules/], loader: 'ng-annotate!babel' },
-      { test: /\.html$/, loader: 'raw' },
-      { test: /\.less$/, loader: 'style!css!less' },
-      { test: /\.css$/, loader: 'style!css' },
-      { test: /\.md$/, loader: "html!markdown" }
-    ]
+    rules: [
+      {
+        test: /\.js$/i,
+        exclude: [/node_modules/, /dist/],
+        use: [
+          {
+            loader: 'ng-annotate-loader',
+            options: {
+              ngAnnotate: 'ng-annotate-patched',
+            },
+          },
+          'babel-loader',
+        ],
+      },
+      {
+        test: /\.html$/,
+        loader: 'html-loader',
+      },
+      {
+        test: /\.((c|le)ss)$/i,
+        use: [
+          'style-loader',
+          'css-loader',
+          'less-loader',
+        ],
+      },
+      {
+        test: /\.md$/i,
+        use: [
+          'html-loader',
+          'markdown-loader',
+        ],
+      },
+    ],
   },
-  plugins: []
+  plugins: [],
 };

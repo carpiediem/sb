@@ -1,5 +1,7 @@
 class ModelController {
   constructor($rootScope, $parse) {
+    'ngInject';
+
     this.$parse = $parse;
 
     if (window.sbtype === 'react') {
@@ -11,7 +13,7 @@ class ModelController {
       this.listener = $rootScope.$on('render', (event, entity) => {
           setTimeout(() => {
             this.render(event, entity.component)
-            $rootScope.$apply(); 
+            $rootScope.$apply();
           }, 0);
       });
 
@@ -23,9 +25,7 @@ class ModelController {
       }
       this.$rootScope = $rootScope;
       this.inFirst = true;
-      
     }
-
   }
 
   $onDestroy() {
@@ -35,7 +35,7 @@ class ModelController {
   onEditorChange(editor) {
     editor.$blockScrolling = Infinity;
     let session = editor.getSession();
-    
+
     // On editor change try to load new component
     session.on("change", (e) => {
       this.broadcastModel(session.getValue());
@@ -43,14 +43,13 @@ class ModelController {
   }
 
   broadcastModel(model) {
-
-    // Prevent first paint canges
+    // Prevent first paint changes
     if (this.inFirst) {
       this.inFirst = false;
       return;
     }
 
-    // Try to render new molel 
+    // Try to render new model
     try {
       let v = JSON.parse(model);
       this.component.model = v; 
@@ -59,14 +58,13 @@ class ModelController {
   }
 
   render(event, component) {
-
     // We need original template for prevent changes
     // So store original component
     this.originalComponent = component;
     this.component = component;
 
     try {
-      // Store model 
+      // Store model
       this.model = JSON.stringify(component.model, null, Number(4));
       this.renderError = false;
     } catch (e) {

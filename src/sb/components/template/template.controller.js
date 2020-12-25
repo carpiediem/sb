@@ -1,5 +1,6 @@
 class TemplateController {
   constructor($rootScope) {
+    'ngInject';
 
     this.$rootScope = $rootScope;
 
@@ -7,7 +8,6 @@ class TemplateController {
       this.renderError = true;
       this.errorMessage = 'Sorry but for now SB not support live component editor for React. We work on this. Stay tuned!';
     } else {
-      
       // Listen for new component data and render it
       this.listener = $rootScope.$on('render', (event, entity) => {
         this.render(event, entity.component);
@@ -21,9 +21,7 @@ class TemplateController {
       }
 
       this.errorMessage = 'Unable to load template. Are you pass it with string?'; 
-
     }
-
   }
 
   $onDestroy() {
@@ -51,7 +49,7 @@ class TemplateController {
     // Update component template
     this.component.template = template;
 
-    // Try to render new template 
+    // Try to render new template
     try {
       this.$rootScope.$broadcast('updateComponent', this.component);
     } catch (e) {

@@ -1,5 +1,5 @@
 export default function routerConfiguration($urlRouterProvider, $stateProvider, $httpProvider, $locationProvider) {
-    "ngInject";
+    'ngInject';
 
     $httpProvider.defaults.cache = true;
     $stateProvider

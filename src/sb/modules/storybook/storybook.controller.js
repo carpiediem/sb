@@ -1,5 +1,7 @@
 class StorybookController {
   constructor($state, $scope, $mdSidenav, storeService) {
+    'ngInject';
+
     this.$state = $state;
     this.$scope = $scope;
     this.$mdSidenav = $mdSidenav;

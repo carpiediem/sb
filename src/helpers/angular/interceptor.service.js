@@ -1,6 +1,7 @@
 class InterceptorController {
-
     constructor() {
+        'ngInject';
+
         this.requests = {};
         this.updateXHROpenMethod();
     }
@@ -9,7 +10,6 @@ class InterceptorController {
         let self = this;
         this.origOpen = XMLHttpRequest.prototype.open;
         XMLHttpRequest.prototype.open = function(type, url) {
-
             // Skip request to browser-sync
             if (url.indexOf('browser-sync/socket.io') === -1) {
                 const id = self.generateID();
@@ -41,7 +41,6 @@ class InterceptorController {
     generateID() {
         return Math.random().toString(36).substr(2, 10);
     }
-
 }
 
 export default InterceptorController;

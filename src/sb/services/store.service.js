@@ -1,11 +1,11 @@
 export default class StoreService {
-
     constructor() {
+        'ngInject';
+
         this.components = {};
     }
 
     component(item) {
-        
         if (!item.title || !item.template) {
             throw new Error(`${item.title} is not correct component. Title or template is missing`);
         }
@@ -21,5 +21,4 @@ export default class StoreService {
     getAllComponents() {
         return this.components;
     }
-
 }

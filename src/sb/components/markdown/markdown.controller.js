@@ -1,5 +1,6 @@
 class MarkdownController {
   constructor($rootScope, $parse, $timeout) {
+    'ngInject';
 
     Object.assign(this, { $rootScope, $parse, $timeout });
 
@@ -7,7 +8,6 @@ class MarkdownController {
     this.listener = $rootScope.$on('render', (event, entity) => {
       $timeout(() => this.render(event, entity.component), 0);
     });
-
   }
 
   $onDestroy() {

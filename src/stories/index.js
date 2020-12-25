@@ -1,18 +1,16 @@
-import './mock';
+import mock from './mock';
 import docs from './docs.md';
 
-let survey = sb.section('The week');
-survey.story('Names of the days of the week')
-    .add('Sunday', '<p>{{ vm.sunday }}</p>', 'week', docs)
-    .add('Monday', '<p>{{ vm.monday }}</p>', 'week', docs)
-    .add('Tuesday', '<p>{{ vm.tuesday }}</p>', 'week', docs)
-    .add('Wednesday', '<p>{{ vm.wednesday }}</p>', 'week', docs)
-    .add('Thursday', '<p>{{ vm.thursday }}</p>', 'week', docs)
-    .add('Friday', '<p>{{ vm.friday }}</p>', 'week', docs)
-    .add('Saturday', '<p>{{ vm.saturday }}</p>', 'week', docs);
+let week = sb.section('The Week');
 
-let test = sb.section('Demo 3');
-test.story('Test')
-    .add('Test', '<test text="{{vm.text}}"></test>', {
-        text: 'Monday'
-    });
+week.story('Days of the week')
+    .add('Monday', '<p>{{ vm.days.mon }}</p>', mock, docs)
+    .add('Tuesday', '<p>{{ vm.days.tues }}</p>', mock, docs)
+    .add('Wednesday', '<p>{{ vm.days.wed }}</p>', mock, docs)
+
+let month = sb.section('The Month');
+
+month.story('Months of the year')
+    .add('January', '<p>{{ vm.months.jan }}</p>', mock, docs)
+    .add('February', '<p>{{ vm.months.feb }}</p>', mock, docs)
+    .add('March', '<p>{{ vm.months.mar }}</p>', mock, docs)

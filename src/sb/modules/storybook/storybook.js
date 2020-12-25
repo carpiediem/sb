@@ -3,13 +3,11 @@ import uiRouter from 'angular-ui-router';
 import homeComponent from './storybook.component';
 import compile from './helper.compile';
 
-
 let homeModule = angular.module('storybook', [
   uiRouter
 ])
-
 .config(($stateProvider) => {
-  "ngInject";
+  'ngInject';
 
   $stateProvider
     .state('main.storybook', {
@@ -17,13 +15,9 @@ let homeModule = angular.module('storybook', [
       template: '<storybook flex layout="row"></storybook>',
       reloadOnSearch : false
     });
-    
 })
-
 .component('storybook', homeComponent)
-
-.directive('compile', compile)
-
+.directive('compile', () => new compile())
 .name;
 
 export default homeModule;

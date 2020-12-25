@@ -6,9 +6,7 @@ import interceptor from './interceptor.service';
 let module = angular.module('helper', ['ngSanitize']);
 
 module.service('SBInterceptor', interceptor);
-
-module.directive('compile', compile);
-
+module.directive('compile', () => new compile())
 module.component('previewHelper', {
     controller,
     template: `<div compile="vm.template"></div>`,

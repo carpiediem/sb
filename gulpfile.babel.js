@@ -41,7 +41,7 @@ let paths = {
     path.join(root, 'index.html')
   ],
   entry: [
-    'babel-polyfill',
+    '@babel/polyfill',
     path.join(__dirname, root, 'app/index.js')
   ],
   output: root,
@@ -52,27 +52,27 @@ let paths = {
   dest: path.join(__dirname, 'dist')
 };
 
-// use webpack.config.js to build modules
-gulp.task('build', ['clean'], (cb) => {
-  const config = require('./webpack.dist.config');
-  config.entry.app = paths.entry;
+// // use webpack.config.js to build modules
+// gulp.task('build', ['clean'], (cb) => {
+//   const config = require('./webpack.dist.config');
+//   config.entry.app = paths.entry;
 
-  webpack(config, (err, stats) => {
-    if(err)  {
-      throw new gutil.PluginError("webpack", err);
-    }
+//   webpack(config, (err, stats) => {
+//     if(err)  {
+//       throw new gutil.PluginError("webpack", err);
+//     }
 
-    gutil.log("[webpack]", stats.toString({
-      colors: colorsSupported,
-      chunks: false,
-      errorDetails: true
-    }));
+//     gutil.log("[webpack]", stats.toString({
+//       colors: colorsSupported,
+//       chunks: false,
+//       errorDetails: true
+//     }));
 
-    cb();
-  });
-});
+//     cb();
+//   });
+// });
 
-gulp.task('serve', () => {
+gulp.task('serve', gulp.series(() => {
   const config = require('./webpack.dev.config');
   config.entry.app = [
     // this modules required to make HRM working
@@ -90,25 +90,24 @@ gulp.task('serve', () => {
     middleware: [
       historyApiFallback(),
       webpackDevMiddleware(compiler, {
-        stats: {
-          colors: colorsSupported,
-          chunks: false,
-          modules: false
-        },
         publicPath: config.output.publicPath
       }),
       webpackHotMiddleware(compiler)
     ]
   });
-});
+}));
 
-gulp.task('watch', ['serve']);
+// gulp.task('server', gulp.series(function(){
+//     browser.init({server: './_site', port: port});
+// }));
 
-gulp.task('clean', (cb) => {
-  del([paths.dest]).then(function (paths) {
-    gutil.log("[clean]", paths);
-    cb();
-  })
-});
+// gulp.task('watch', ['serve']);
 
-gulp.task('default', ['watch']);
+// gulp.task('clean', (cb) => {
+//   del([paths.dest]).then(function (paths) {
+//     gutil.log("[clean]", paths);
+//     cb();
+//   })
+// });
+
+// gulp.task('default', ['watch']);

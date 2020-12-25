@@ -34,7 +34,7 @@ core.constant('local', (() => {
     return isLocal;
 })());
 
-// Module run fucntion
+// Module run function
 core.run(runFunc);
 
 // Router config
@@ -42,6 +42,8 @@ core.config(routeConfig);
 
 // Thema config
 core.config(($mdThemingProvider) => {
+    'ngInject';
+
     $mdThemingProvider.theme('default')
         .accentPalette('blue');
 });

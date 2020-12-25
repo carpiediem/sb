@@ -8,7 +8,7 @@ import modelComponent from './model/model.component'
 import interceptorComponent from './interceptor/interceptor.component'
 import markdownComponent from './markdown/markdown.component'
 
-const module = angular.module('sb.components', ['ui.router',]);
+const module = angular.module('sb.components', ['ui.router']);
 
 module.component('preview', previewComponent);
 module.component('storyList', storyListComponent);
@@ -17,7 +17,8 @@ module.component('view', templateComponent);
 module.component('interceptor', interceptorComponent);
 module.component('markdown', markdownComponent);
 
-module.run(storeService => {
+module.run((storeService) => {
+    'ngInject';
 
     const tabs = [
         {
@@ -44,7 +45,6 @@ module.run(storeService => {
 
     // Register tabs
     tabs.forEach(tab => storeService.component(tab));
-
 });
 
 export default module;

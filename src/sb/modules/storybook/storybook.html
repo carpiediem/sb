@@ -3,7 +3,6 @@
 </md-sidenav>
 
 <md-content flex layout="column">
-
 	<md-toolbar id="header">
 		<div class="md-toolbar-tools">
 			<md-button class="md-icon-button button__open-sidebar" aria-label="Open sidebar" ng-class="{ 'hidden': vm.isSidebarOpen() }"
@@ -26,8 +25,22 @@
 		</div>
 	</md-toolbar>
 
-	<div flex layout="row" class="story__view" ng-class="{ 'split__active': vm.splitViewActive, 'responsive__active': vm.responsiveActive }">
-		<div ng-repeat="(key, item) in vm.components track by $index" flex layout="column" compile="item.template" ng-show="vm.showComponent(item.title)"></div>
+	<div
+		flex
+		layout="row"
+		class="story__view"
+		ng-class="{
+			'split__active': vm.splitViewActive,
+			'responsive__active': vm.responsiveActive,
+		}"
+	>
+		<div
+			ng-repeat="(key, item) in vm.components track by $index"
+			flex
+			layout="column"
+			compile="item.template"
+			ng-show="vm.showComponent(item.title)"
+		>
+		</div>
 	</div>
-
 </md-content>

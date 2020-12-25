@@ -1,5 +1,7 @@
 class InterceptorController {
     constructor($scope) {
+        'ngInject';
+
         this.$scope = $scope;
         this.requests = {};
 
@@ -35,7 +37,6 @@ class InterceptorController {
         this.activeRequest = request;
         this.activeRequest.selected = true;
     }
-
 }
 
 export default InterceptorController;

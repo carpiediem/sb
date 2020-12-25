@@ -1,7 +1,6 @@
 class StoryListController {
-
   constructor($rootScope, $window, $state, $mdSidenav, $scope) {
-    "ngInject";
+    'ngInject';
 
     this.$mdSidenav = $mdSidenav;
     this.$rootScope = $rootScope;
@@ -32,7 +31,7 @@ class StoryListController {
     // List of avaliable sections
     this.sectionsList = Object.keys(this.sections);
 
-    // Active stories 
+    // Active stories
     this.stories = {};
 
     // Active story point
@@ -98,7 +97,7 @@ class StoryListController {
   selectComponent(force) {
     let section, storyTitle, pointTitle, component;
     let params = this.$state.params;
-    
+
     if (!force && this.$state.params.story && this.$state.params.point) {
       section = this.$state.params.section;
       storyTitle = this.$state.params.story;

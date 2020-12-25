@@ -1,5 +1,4 @@
 class StoriesAPI {
-
     constructor() {
         this.sections = {};
         this.mocks = {};
@@ -7,9 +6,9 @@ class StoriesAPI {
 
 
     /**
-     * Creta new section
+     * Create new section
      * and return API instance that allow create stories
-     * 
+     *
      * @param name Section name
      * @returns function SB API instance
      */
@@ -40,8 +39,8 @@ class StoriesAPI {
 
 
     /**
-     * Get all savad sections
-     * 
+     * Get all saved sections
+     *
      * @returns object Sections
      */
     getSections() {
@@ -50,8 +49,8 @@ class StoriesAPI {
 
     /**
      * Get story from store
-     * 
-     * @param sbObject Should contaie section, story name and point ID.
+     *
+     * @param sbObject Should contain section, story name and point ID.
      * @returns object Story
      */
     getStory(sbObject) {
@@ -72,10 +71,10 @@ class StoriesAPI {
 
     /**
      * Update story with new data
-     * Used for save tempalate and model
+     * Used for save template and model
      * Use this method if you need to edit any story param
-     * 
-     * @param sbObject Should contaie section, story name and point ID.
+     *
+     * @param sbObject Should contain section, story name and point ID.
      * @param data Story point that need update
      */
     updateStory(sbObject, data) {
@@ -86,7 +85,7 @@ class StoriesAPI {
     /**
      * Store mock for stories.
      * Mock can be stored as object.
-     * 
+     *
      * @param key Mock name
      * @param value Mock value.
      * @param perform Function witch will call with mocked data
@@ -102,7 +101,7 @@ class StoriesAPI {
 
     /**
      * Get mock from store
-     * 
+     *
      * @param key Mock name
      * @returns object Mock
      */

@@ -4,8 +4,8 @@ import {
 } from './devices';
 
 class PreviewController {
-
-  constructor($rootScope, $scope, $state, $stateParams) {
+  constructor($rootScope, $state, $stateParams) {
+    'ngInject';
 
     this.$state = $state;
     this.$stateParams = $stateParams;
@@ -80,7 +80,7 @@ class PreviewController {
     this.render(event, {
       type: 'component',
       data: params
-    });     
+    });
   }
 
   selectDevice(device) {
