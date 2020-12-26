@@ -3,12 +3,6 @@
 import gulp     from 'gulp';
 import webpack  from 'webpack';
 import path     from 'path';
-import sync     from 'run-sequence';
-import rename   from 'gulp-rename';
-import template from 'gulp-template';
-import fs       from 'fs';
-import yargs    from 'yargs';
-import lodash   from 'lodash';
 import gutil    from 'gulp-util';
 import serve    from 'browser-sync';
 import del      from 'del';
@@ -104,11 +98,3 @@ gulp.task('serve', gulp.series(() => {
     ]
   });
 }));
-
-// gulp.task('server', gulp.series(function(){
-//     browser.init({server: './_site', port: port});
-// }));
-
-// gulp.task('watch', ['serve']);
-
-// gulp.task('default', ['watch']);
