@@ -14,8 +14,6 @@ config.output = {
   path: path.resolve(__dirname, 'dist')
 };
 
-config.plugins = config.plugins.concat([
-  
-]);
+config.plugins = config.plugins.concat([]);
 
 module.exports = config;

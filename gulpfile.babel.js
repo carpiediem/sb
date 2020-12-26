@@ -52,25 +52,33 @@ let paths = {
   dest: path.join(__dirname, 'dist')
 };
 
-// // use webpack.config.js to build modules
-// gulp.task('build', ['clean'], (cb) => {
-//   const config = require('./webpack.dist.config');
-//   config.entry.app = paths.entry;
+gulp.task('clean', gulp.series((cb) => {
+  del([paths.dest]).then((paths) => {
+    gutil.log('[clean]', paths);
 
-//   webpack(config, (err, stats) => {
-//     if(err)  {
-//       throw new gutil.PluginError("webpack", err);
-//     }
+    cb();
+  });
+}));
 
-//     gutil.log("[webpack]", stats.toString({
-//       colors: colorsSupported,
-//       chunks: false,
-//       errorDetails: true
-//     }));
+// use webpack.config.js to build modules
+gulp.task('build', gulp.series('clean', (cb) => {
+  const config = require('./webpack.dist.config');
+  config.entry.app = paths.entry;
 
-//     cb();
-//   });
-// });
+  webpack(config, (err, stats) => {
+    if(err)  {
+      throw new gutil.PluginError('webpack', err);
+    }
+
+    gutil.log('[webpack]', stats.toString({
+      colors: colorsSupported,
+      chunks: false,
+      errorDetails: true
+    }));
+
+    cb();
+  });
+}));
 
 gulp.task('serve', gulp.series(() => {
   const config = require('./webpack.dev.config');
@@ -102,12 +110,5 @@ gulp.task('serve', gulp.series(() => {
 // }));
 
 // gulp.task('watch', ['serve']);
-
-// gulp.task('clean', (cb) => {
-//   del([paths.dest]).then(function (paths) {
-//     gutil.log("[clean]", paths);
-//     cb();
-//   })
-// });
 
 // gulp.task('default', ['watch']);
