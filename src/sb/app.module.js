@@ -1,15 +1,9 @@
 import * as angular from 'angular';
 
-import core from './core/core.module';
-import services from './services/services.module';
-import modules from './modules/modules.module';
-import components from './components/components.module';
-import directives from './directives/directives.module';
+import './core/core.module';
+import './services/services.module';
+import './modules/modules.module';
+import './components/components.module';
+import './directives/directives.module';
 
-angular.module('sb', [
-    'sb.core',
-    'sb.modules',
-    'sb.directives',
-    'sb.services',
-    'sb.components'
-]);
+angular.module('sb', ['sb.core', 'sb.modules', 'sb.directives', 'sb.services', 'sb.components']);

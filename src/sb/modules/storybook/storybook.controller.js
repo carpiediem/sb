@@ -11,7 +11,6 @@ class StorybookController {
 
     this.components = storeService.getAllComponents();
     this.componentsList = Object.keys(this.components);
-
   }
 
   $postLink() {
@@ -66,7 +65,7 @@ class StorybookController {
       reload: false,
       location: true,
       inherit: false,
-      notify: false
+      notify: false,
     });
     if (k === 'state') {
       this.page = v;
@@ -81,7 +80,6 @@ class StorybookController {
   openSidebar() {
     this.$mdSidenav('left').open();
   }
-
 }
 
 export default StorybookController;

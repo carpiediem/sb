@@ -1,7 +1,4 @@
-import {
-  devicesSize,
-  devices
-} from './devices';
+import { devicesSize, devices } from './devices';
 
 class PreviewController {
   constructor($rootScope, $state, $stateParams) {
@@ -14,7 +11,7 @@ class PreviewController {
       this.setDocumentTitle(entity.sbObject.point);
       this.render(event, {
         type: 'component',
-        data: entity.sbObject
+        data: entity.sbObject,
       });
     });
 
@@ -37,7 +34,6 @@ class PreviewController {
       }
       this.selectedDevice = this.devices[0];
     });
-
   }
 
   $postLink() {
@@ -64,8 +60,8 @@ class PreviewController {
     } else {
       this.dynamicSize = {
         width: 600,
-        height: 450
-      }
+        height: 450,
+      };
       this.selectedDevice = this.devices[0];
     }
   }
@@ -74,12 +70,12 @@ class PreviewController {
     let params = {
       section: this.$stateParams.section,
       story: this.$stateParams.story,
-      id: component.id
+      id: component.id,
     };
     window.sb.updateStory(params, component);
     this.render(event, {
       type: 'component',
-      data: params
+      data: params,
     });
   }
 
@@ -90,7 +86,7 @@ class PreviewController {
       reload: false,
       location: true,
       inherit: false,
-      notify: false
+      notify: false,
     });
     this.dynamicSize = this.devicesSize[device];
   }
@@ -98,7 +94,6 @@ class PreviewController {
   setDocumentTitle(title) {
     document.title = `${title} — SB`;
   }
-
 }
 
 export default PreviewController;

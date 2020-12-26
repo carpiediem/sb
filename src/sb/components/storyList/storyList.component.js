@@ -6,7 +6,7 @@ let storyListComponent = {
   bindings: {},
   controllerAs: 'vm',
   template,
-  controller
+  controller,
 };
 
 export default storyListComponent;

@@ -6,7 +6,7 @@ let interceptorComponent = {
   bindings: {},
   controllerAs: 'vm',
   template,
-  controller
+  controller,
 };
 
 export default interceptorComponent;

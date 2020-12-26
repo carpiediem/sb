@@ -14,12 +14,12 @@ module.exports = function (config) {
     exclude: [],
 
     plugins: [
-      require("karma-chai"),
-      require("karma-chrome-launcher"),
-      require("karma-mocha"),
-      require("karma-mocha-reporter"),
-      require("karma-sourcemap-loader"),
-      require("karma-webpack")
+      require('karma-chai'),
+      require('karma-chrome-launcher'),
+      require('karma-mocha'),
+      require('karma-mocha-reporter'),
+      require('karma-sourcemap-loader'),
+      require('karma-webpack'),
     ],
 
     // preprocess matching files before serving them to the browser
@@ -33,13 +33,13 @@ module.exports = function (config) {
           { test: /\.js/, exclude: [/app\/lib/, /node_modules/], loader: 'babel' },
           { test: /\.html/, loader: 'raw' },
           { test: /\.styl$/, loader: 'style!css!stylus' },
-          { test: /\.css$/, loader: 'style!css' }
-        ]
-      }
+          { test: /\.css$/, loader: 'style!css' },
+        ],
+      },
     },
 
     webpackServer: {
-      noInfo: true // prevent console spamming when running in Karma!
+      noInfo: true, // prevent console spamming when running in Karma!
     },
 
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
@@ -63,6 +63,6 @@ module.exports = function (config) {
     browsers: ['Chrome'],
 
     // if true, Karma runs tests once and exits
-    singleRun: true
+    singleRun: true,
   });
 };

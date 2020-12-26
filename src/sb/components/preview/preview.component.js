@@ -6,7 +6,7 @@ let previewComponent = {
   bindings: {},
   controllerAs: 'vm',
   template,
-  controller
+  controller,
 };
 
 export default previewComponent;

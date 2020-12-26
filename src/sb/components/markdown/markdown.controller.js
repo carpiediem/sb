@@ -17,7 +17,6 @@ class MarkdownController {
   render(event, component) {
     this.docs = component.docs;
   }
-
 }
 
 export default MarkdownController;

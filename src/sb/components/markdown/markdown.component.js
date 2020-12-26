@@ -6,7 +6,7 @@ let markdownComponent = {
   bindings: {},
   controllerAs: 'vm',
   template,
-  controller
+  controller,
 };
 
 export default markdownComponent;

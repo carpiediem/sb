@@ -6,7 +6,7 @@ let StorybookComponent = {
   bindings: {},
   controllerAs: 'vm',
   template,
-  controller
+  controller,
 };
 
 export default StorybookComponent;

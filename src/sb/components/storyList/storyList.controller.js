@@ -21,7 +21,6 @@ class StoryListController {
     this.initStories();
 
     this.$mdSidenav('left').open();
-
   }
 
   initStories() {
@@ -51,7 +50,7 @@ class StoryListController {
   }
 
   selectSection(sectionTitle) {
-    this.selectStory(sectionTitle)
+    this.selectStory(sectionTitle);
     this.selectComponent(true);
   }
 
@@ -78,7 +77,7 @@ class StoryListController {
       reload: false,
       location: true,
       inherit: false,
-      notify: false
+      notify: false,
     });
 
     this.closeSearch();
@@ -89,8 +88,8 @@ class StoryListController {
         id: component.id,
         story,
         point: component.title,
-        section: this.selectedSection
-      }
+        section: this.selectedSection,
+      },
     });
   }
 
@@ -103,7 +102,7 @@ class StoryListController {
       storyTitle = this.$state.params.story;
       pointTitle = this.$state.params.point;
       if (this.sections[section] && this.sections[section][storyTitle]) {
-        component = this.sections[section][storyTitle].find(point => point.title === pointTitle);
+        component = this.sections[section][storyTitle].find((point) => point.title === pointTitle);
       }
     }
 
@@ -122,7 +121,7 @@ class StoryListController {
       reload: false,
       location: true,
       inherit: false,
-      notify: false
+      notify: false,
     });
 
     this.$rootScope.$broadcast('render', {
@@ -131,16 +130,14 @@ class StoryListController {
         id: component.id,
         story: storyTitle,
         point: component.title,
-        section: this.selectedSection
-      }
+        section: this.selectedSection,
+      },
     });
-
   }
 
   sloseSidebar() {
     this.$mdSidenav('left').close();
   }
-
 }
 
 export default StoryListController;

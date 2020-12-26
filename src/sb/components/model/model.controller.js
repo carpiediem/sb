@@ -6,23 +6,23 @@ class ModelController {
 
     if (window.sbtype === 'react') {
       this.renderError = true;
-      this.errorMessage = 'Sorry but for now SB not support live component editor for React. We work on this. Stay tuned!';
+      this.errorMessage =
+        'Sorry but for now SB not support live component editor for React. We work on this. Stay tuned!';
     } else {
-
       // Listen for new component data and render it
       this.listener = $rootScope.$on('render', (event, entity) => {
-          setTimeout(() => {
-            this.render(event, entity.component)
-            $rootScope.$apply();
-          }, 0);
+        setTimeout(() => {
+          this.render(event, entity.component);
+          $rootScope.$apply();
+        }, 0);
       });
 
       // ACE editor settings
       this.settings = {
         mode: 'json',
         useWrapMode: true,
-        onLoad: this.onEditorChange.bind(this)
-      }
+        onLoad: this.onEditorChange.bind(this),
+      };
       this.$rootScope = $rootScope;
       this.inFirst = true;
     }
@@ -37,7 +37,7 @@ class ModelController {
     let session = editor.getSession();
 
     // On editor change try to load new component
-    session.on("change", (e) => {
+    session.on('change', (e) => {
       this.broadcastModel(session.getValue());
     });
   }
@@ -52,9 +52,9 @@ class ModelController {
     // Try to render new model
     try {
       let v = JSON.parse(model);
-      this.component.model = v; 
+      this.component.model = v;
       this.$rootScope.$broadcast('updateComponent', this.component);
-    } catch (e) { }
+    } catch (e) {}
   }
 
   render(event, component) {
@@ -70,9 +70,7 @@ class ModelController {
     } catch (e) {
       this.renderError = true;
     }
-
   }
-
 }
 
 export default ModelController;

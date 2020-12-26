@@ -1,19 +1,19 @@
 class CompileDirective {
-    controller($compile) {
-        'ngInject';
+  controller($compile) {
+    'ngInject';
 
-        this.$compile = $compile;
-    }
+    this.$compile = $compile;
+  }
 
-    link(scope, element, attrs, ctrl) {
-        scope.$watch(
-            scope => scope.$eval(attrs.compile),
-            value => {
-                element.html(value);
-                ctrl.$compile(element.contents())(scope);
-            }
-        );
-    }
+  link(scope, element, attrs, ctrl) {
+    scope.$watch(
+      (scope) => scope.$eval(attrs.compile),
+      (value) => {
+        element.html(value);
+        ctrl.$compile(element.contents())(scope);
+      }
+    );
+  }
 }
 
 export default CompileDirective;

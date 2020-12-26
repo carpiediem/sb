@@ -1,4 +1,4 @@
-const TerserPlugin = require("terser-webpack-plugin");
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   module: {
@@ -22,18 +22,11 @@ module.exports = {
       },
       {
         test: /\.((c|le)ss)$/i,
-        use: [
-          'style-loader',
-          'css-loader',
-          'less-loader',
-        ],
+        use: ['style-loader', 'css-loader', 'less-loader'],
       },
       {
         test: /\.md$/i,
-        use: [
-          'html-loader',
-          'markdown-loader',
-        ],
+        use: ['html-loader', 'markdown-loader'],
       },
     ],
   },
