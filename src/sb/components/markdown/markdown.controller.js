@@ -1,8 +1,8 @@
 class MarkdownController {
-  constructor($rootScope, $parse, $timeout) {
+  constructor($rootScope, $parse, $timeout, $sce) {
     'ngInject';
 
-    Object.assign(this, { $rootScope, $parse, $timeout });
+    Object.assign(this, { $rootScope, $parse, $timeout, $sce });
 
     // Listen for new component data and render it
     this.listener = $rootScope.$on('render', (event, entity) => {
@@ -15,7 +15,7 @@ class MarkdownController {
   }
 
   render(event, component) {
-    this.docs = component.docs;
+    this.docs = $sce.trustAsHtml(component.docs);
   }
 }
 
